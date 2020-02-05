@@ -4,22 +4,14 @@
 #
 version: 2
 jobs:
-  build:
+  deploy:
     docker:
-      # specify the version you desire here
       - image: circleci/node:13.7.0
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
 
     working_directory: ~/repo
 
     steps:
       - checkout
-
-      # Download and cache dependencies
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
@@ -44,14 +36,31 @@ jobs:
       # run tests!
       - run: yarn test
 
-deployment: #部屬的環境
-  develop:
-    branch: /^(?!master$).*$/ #表示任何一個branch被觸發時都執行commands
-    commands:
-      - eb use env-dev --profile default #將eb切換到「env-dev」環境
-      - eb deploy --profile default #把程式deploy上「env-dev」
-  production:
-    branch: master #当修改合进master时即会自动部署
-    commands:
-      - eb use env-prod --profile default 
-      - eb deploy --profile default
+      - run:
+          name: Deploying
+          command: eb deploy $CIRCLE_BRANCH
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only:
+                - develop
+                - master
+                - production
+
+# develop:
+#   branch: /^(?!master$).*$/ #表示任何一個branch被觸發時都執行commands
+#   commands:
+#     - eb use env-dev --profile default #將eb切換到「env-dev」環境
+#     - eb deploy --profile default #把程式deploy上「env-dev」
+#     - echo 'hello in develop'
+# production:
+#   branch: master #当修改合进master时即会自动部署
+#   commands:
+#     - eb use env-prod --profile default 
+#     - eb deploy --profile default
+#     - echo 'hello in production'
