@@ -38,7 +38,7 @@ jobs:
 
       - run:
           name: Deploying
-          command: eb deploy env-dev
+          command: eb deploy production
 
 workflows:
   version: 2
