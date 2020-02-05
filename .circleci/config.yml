@@ -46,6 +46,4 @@ jobs:
 
       - run: 
         name: Deploying
-        commands: |
-          eb use env-dev --profile default  #將eb切換到「env-dev」環境
-          eb deploy --profile default #把程式deploy上「env-dev」
+        command: eb use env-dev --profile default && eb deploy --profile default #把程式deploy上「env-dev」
