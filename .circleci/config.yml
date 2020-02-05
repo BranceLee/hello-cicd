@@ -40,8 +40,8 @@ jobs:
       - run: yarn test
 
       - run:
-        name: Deploying
-        command: eb deploy env-prod 
+          name: Deploying
+          command: eb deploy $CIRCLE_BRANCH-my-application
 
 workflows:
   version: 2
