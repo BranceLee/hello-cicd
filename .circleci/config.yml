@@ -44,6 +44,9 @@ jobs:
       # run tests!
       - run: yarn test
 
-      # - run: 
-      #   name: Deploying
-      #   command: eb use env-dev --profile default && eb deploy --profile default #把程式deploy上「env-dev」
+deployment: #部屬的環境
+  develop:
+    branch: /^(?!master$).*$/ #表示任何一個branch被觸發時都執行commands
+    commands:
+      - eb use env-dev --profile default #將eb切換到「env-dev」環境
+      - eb deploy --profile default #把程式deploy上「env-dev」
