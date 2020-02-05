@@ -41,26 +41,26 @@ jobs:
         name: Deploying
         command: eb deploy $CIRCLE_BRANCH-my-application
 
-workflows:
-  version: 2
-  build:
-    jobs:
-      - deploy:
-          filters:
-            branches:
-              only:
-                - develop
-                - master
+# workflows:
+#   version: 2
+#   build:
+#     jobs:
+#       - deploy:
+#           filters:
+#             branches:
+#               only:
+#                 - develop
+#                 - master
 
-# develop:
-#   branch: /^(?!master$).*$/ #表示任何一個branch被觸發時都執行commands
-#   commands:
-#     - eb use env-dev --profile default #將eb切換到「env-dev」環境
-#     - eb deploy --profile default #把程式deploy上「env-dev」
-#     - echo 'hello in develop'
-# production:
-#   branch: master #当修改合进master时即会自动部署
-#   commands:
-#     - eb use env-prod --profile default 
-#     - eb deploy --profile default
-#     - echo 'hello in production'
+develop:
+  branch: /^(?!master$).*$/ #表示任何一個branch被觸發時都執行commands
+  commands:
+    - eb use env-dev --profile default #將eb切換到「env-dev」環境
+    - eb deploy --profile default #把程式deploy上「env-dev」
+    - echo 'hello in develop'
+production:
+  branch: master #当修改合进master时即会自动部署
+  commands:
+    - eb use env-prod --profile default 
+    - eb deploy --profile default
+    - echo 'hello in production'
