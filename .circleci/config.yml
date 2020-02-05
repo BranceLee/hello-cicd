@@ -38,7 +38,7 @@ jobs:
 
       - run:
           name: Deploying
-          command: eb deploy $CIRCLE_BRANCH-my-application
+          command: eb deploy env-dev
 
 workflows:
   version: 2
