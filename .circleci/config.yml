@@ -50,6 +50,7 @@ workflows:
               only:
                 - develop
                 - master
+                - production
 
 # develop:
 #   branch: /^(?!master$).*$/ #表示任何一個branch被觸發時都執行commands
