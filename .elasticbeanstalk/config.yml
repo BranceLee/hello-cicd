@@ -4,6 +4,10 @@ branch-defaults:
     group_suffix: null
   production:
     environment: prod-env
+environment-defaults:
+  prod-env:
+    branch: null
+    repository: null
 global:
   application_name: hello-cicd
   branch: null
