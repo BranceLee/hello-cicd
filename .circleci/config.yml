@@ -50,3 +50,8 @@ deployment: #部屬的環境
     commands:
       - eb use env-dev --profile default #將eb切換到「env-dev」環境
       - eb deploy --profile default #把程式deploy上「env-dev」
+  production:
+    branch: master #当修改合进master时即会自动部署
+    commands:
+      - eb use env-prod --profile default 
+      - eb deploy --profile default
