@@ -44,7 +44,6 @@ jobs:
       # run tests!
       - run: yarn test
 
-deployment: #部屬的環境
   develop:
     branch: /^(?!master$).*$/ #表示任何一個branch被觸發時都執行commands
     commands:
