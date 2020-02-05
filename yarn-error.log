@@ -1,0 +1,45 @@
+Arguments: 
+  /usr/local/Cellar/node/13.7.0/bin/node /Users/lee/.yarn/bin/yarn.js start
+
+PATH: 
+  /Users/lee/.yarn/bin:/Users/lee/.config/yarn/global/node_modules/.bin:/usr/local/Cellar/redis/5.0.5/bin:/usr/local/opt/redis@4.0/bin:/Users/lee/bin:/usr/local/bin:/Library/Frameworks/Python.framework/Versions/3.8/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/lee/go/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Users/lee/Arcanist/arcanist/bin
+
+Yarn version: 
+  1.17.3
+
+Node version: 
+  13.7.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/lee/GitHub/aws_EB/hello-cicd/package.json: Unexpected string in JSON at position 188
+      at JSON.parse (<anonymous>)
+      at /Users/lee/.yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/Users/lee/.yarn/lib/cli.js:304:30)
+      at /Users/lee/.yarn/lib/cli.js:315:13
+
+npm manifest: 
+  {
+   "name": "hello-cicd",
+    "version": "1.0.0",
+    "description": "practice auto deploy project with cicleci to aws eb",
+    "main": "index.js",
+    "scripts": {
+      "start":"node index.js"
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "brancelee",
+    "license": "ISC",
+    "dependencies": {
+      "express": "4.17.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
